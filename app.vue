@@ -1,11 +1,19 @@
 <template>
-  <div>
-    <header>
-      <Nav />
-    </header>
+  <div class="flex flex-col gap-4">
+    <PageHeader />
+
+    <main>
+      <PageContainer>
+        <article>
+          Main content
+        </article>
+      </PageContainer>
+    </main>
+
+    <PageFooter />
   </div>
 </template>
 
-<script setup>
-  import '@/assets/scss/tailwind.scss';
+<script>
+  import '@/assets/scss/global.scss';
 </script>
