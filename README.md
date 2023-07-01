@@ -2,7 +2,7 @@
 
 ## Stack
 
-- [Nuxt 3](https://nuxt.com/).
+- [Nuxt 3](https://nuxt.com/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 
@@ -63,5 +63,3 @@ pnpm run preview
 # yarn
 yarn preview
 ```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
