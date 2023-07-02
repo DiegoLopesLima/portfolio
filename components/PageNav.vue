@@ -11,12 +11,7 @@
     </button>
 
     <div
-      :class="[
-        $style['page-nav-content'],
-        {
-          [$style.open]: open
-        }
-      ]"
+      :class="$style['page-nav-content']"
     >
       <Menu />
 
@@ -28,16 +23,17 @@
 </template>
 
 <script setup>
-  let open = ref(false);
+  const isNavOpen = useIsNavOpen();
 
   const handleToggle = () => {
-    open.value = !open.value;
+    isNavOpen.value = !isNavOpen.value;
   };
 </script>
 
 <style lang="scss" module>
   .page-nav {
-    @apply inline-flex flex-col gap-2;
+    @apply inline-flex flex-col;
+    @apply w-full gap-2;
 
     &-toggle {
       @apply inline-flex;
@@ -46,11 +42,7 @@
     }
 
     &-content {
-      @apply hidden flex-col gap-4;
-
-      &.open {
-        @apply flex;
-      }
+      @apply flex flex-col gap-4;
     }
   }
 </style>

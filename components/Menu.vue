@@ -31,6 +31,7 @@
     &-link {
       @apply flex items-center;
       @apply gap-2 py-2 px-3 rounded-sm;
+      @apply transition-colors;
       @apply hover:bg-zinc-900 hover:bg-opacity-20;
     }
   }

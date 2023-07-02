@@ -2,13 +2,15 @@
   <div class="flex flex-col gap-4">
     <PageHeader />
 
-    <main>
-      <PageContainer>
-        <article>
-          Main content
-        </article>
-      </PageContainer>
-    </main>
+    <div class="pt-14">
+      <main class="pt-4">
+        <PageContainer>
+          <article>
+            Main content
+          </article>
+        </PageContainer>
+      </main>
+    </div>
 
     <PageFooter />
   </div>
