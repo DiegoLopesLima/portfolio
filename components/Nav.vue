@@ -6,14 +6,11 @@
   </nav>
 </template>
 
-<script>
-  export default defineComponent({
-    name: 'Nav',
-    props: {
-      title: {
-        type: String,
-        required: true,
-      },
+<script setup>
+  const props = defineProps({
+    title: {
+      type: String,
+      required: true,
     },
   });
 </script>
@@ -24,6 +21,7 @@
 
     &-title {
       @apply text-sm;
+      @apply drop-shadow-md;
     }
   }
 </style>

@@ -15,7 +15,7 @@
     >
       <Menu />
 
-      <hr />
+      <Divider />
 
       <SocialMedias />
     </div>
@@ -33,7 +33,7 @@
 <style lang="scss" module>
   .page-nav {
     @apply inline-flex flex-col;
-    @apply w-full gap-2;
+    @apply w-full gap-4;
 
     &-toggle {
       @apply inline-flex;
