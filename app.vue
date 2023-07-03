@@ -2,7 +2,7 @@
   <div class="flex flex-col gap-4">
     <PageHeader />
 
-    <div :class="$style['section-1']">
+    <div :class="$style['hero-banner']">
       <main class="pt-4">
         <PageContainer>
           <article>
@@ -21,11 +21,31 @@
 </script>
 
 <style lang="scss" module>
-  .section-1 {
+  .hero-banner {
     @apply pt-14;
-    @apply min-h-screen;
-    @apply bg-no-repeat bg-center;
-    background-image: url('@/assets/images/bg-1.jpg');
-    background-size: auto 100%;
+    @apply h-96;
+    @apply bg-no-repeat bg-cover bg-center;
+    @apply bg-black;
+    background-image: url('@/assets/images/bg-hero-banner-xs.jpg');
+
+    @media (min-width: theme('screens.sm')) {
+      background-image: url('@/assets/images/bg-hero-banner-sm.jpg');
+    }
+
+    @media (min-width: theme('screens.md')) {
+      background-image: url('@/assets/images/bg-hero-banner-md.jpg');
+    }
+
+    @media (min-width: theme('screens.lg')) {
+      background-image: url('@/assets/images/bg-hero-banner-lg.jpg');
+    }
+
+    @media (min-width: theme('screens.xl')) {
+      background-image: url('@/assets/images/bg-hero-banner-xl.jpg');
+    }
+
+    @media (min-width: theme('screens.2xl')) {
+      background-image: url('@/assets/images/bg-hero-banner-2xl.jpg');
+    }
   }
 </style>
