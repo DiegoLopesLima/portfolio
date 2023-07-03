@@ -15,7 +15,7 @@
     >
       <Menu />
 
-      <Divider />
+      <Divider class="lg:hidden" />
 
       <SocialMedias />
     </div>
@@ -39,10 +39,12 @@
       @apply inline-flex;
       @apply w-9 h-9 p-2;
       @apply text-xl;
+      @apply lg:hidden;
     }
 
     &-content {
       @apply flex flex-col gap-4;
+      @apply lg:flex-row lg:justify-between;
     }
   }
 </style>

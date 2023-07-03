@@ -7,5 +7,6 @@
 <style lang="scss" module>
   .nav-list {
     @apply flex flex-col gap-1;
+    @apply lg:flex-row;
   }
 </style>
