@@ -21,7 +21,7 @@
     @apply lg:flex-row;
 
     @media (min-width: theme('screens.lg')) {
-      margin-top: (1 / 16) * -1rem;
+      margin-top: -0.0625rem;
     }
 
     &-title {
