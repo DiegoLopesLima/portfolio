@@ -42,6 +42,7 @@
 
     &.open {
       @apply h-full;
+      @apply lg:h-12;
     }
 
     &-title {
