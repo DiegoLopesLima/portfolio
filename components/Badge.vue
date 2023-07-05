@@ -5,6 +5,7 @@
       $style[`badge-${variant}`],
       $style[`badge-${size}`]
     ]"
+    v-bind="attrs"
   >
     <slot></slot>
   </div>
@@ -16,17 +17,22 @@
     size?: 'sm' | 'md' | 'lg';
   };
 
-  const props = withDefaults(defineProps<BadgeProps>(), {
+  const {
+    variant,
+    size
+  } = withDefaults(defineProps<BadgeProps>(), {
     variant: 'primary',
     size: 'md'
   });
+
+  const attrs = useAttrs();
 </script>
 
 <style lang="scss" module>
   .badge {
     @apply inline-flex items-center justify-center;
     @apply whitespace-nowrap;
-    @apply rounded-full;
+    @apply rounded-sm;
     @apply py-1 px-3;
 
     &-sm {
@@ -35,11 +41,6 @@
 
     &-md {
       @apply text-sm;
-    }
-
-    &-primary {
-      @apply bg-blue-500;
-      @apply text-white;
     }
   }
 </style>
