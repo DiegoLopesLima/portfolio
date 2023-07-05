@@ -1,9 +1,7 @@
 <template>
-  <article
-    class="min-h-screen bg-indigo-700 shadow-inner shadow-indigo-950 py-4 flex items-center"
-  >
+  <article :class="$style['experience-section']">
     <PageContainer>
-      <h2 class="text-xl font-bold mb-4">Experience</h2>
+      <h2 class="text-xl font-semibold mb-4">Experience</h2>
 
       <div class="grid lg:grid-cols-2 gap-4">
         <Experience
@@ -47,6 +45,7 @@
         'Tailwind CSS',
         'JavaScript',
         'TypeScript',
+        'Websocket',
         'Webpack',
         'Babel',
         'Node.js',
@@ -158,7 +157,7 @@
       employmentType: EmploymentType.Freelance,
       startDate: new Date(2011, 4, 1),
       endDate: new Date(2014, 4, 1),
-      locationType: LocationType.Remote,
+      locationType: LocationType.OnSite,
       skills: [
         'AngularJS',
         'Angular',
@@ -182,3 +181,11 @@
     }
   ]);
 </script>
+
+<style lang="scss" module>
+  .experience-section {
+    @apply flex items-center;
+    @apply min-h-screen py-4;
+    @apply shadow-inner shadow-black;
+  }
+</style>

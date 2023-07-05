@@ -1,28 +1,39 @@
 <template>
   <div :class="$style.experience">
-    <div class="flex gap-2 items-center">
+    <div :class="$style['experience-resume']">
       <img
         :src="company.image"
         :alt="`${company.name}'s logo.'`"
         class="rounded-md"
       />
 
-      <div>
-        <div class="flex gap-2 text-lg">
-          <span class="font-bold">{{ title }}</span>
+      <div :class="$style['experience-resume-description']">
+        <header :class="$style['experience-resume-header']">
+          <span :class="$style['experience-resume-title']">
+            {{ title }}
+          </span>
 
-          <small>({{ employmentTypeMap[employmentType] }}, {{ locationTypeMap[locationType] }})</small>
-        </div>
+          <small
+            :class="$style['experience-resume-type']"
+          >
+            ({{ employmentTypeMap[employmentType] }}, {{ locationTypeMap[locationType] }})
+          </small>
+        </header>
 
-        <div>{{ company.name }}</div>
+        <div :class="$style['experience-resume-company']">{{ company.name }}</div>
 
         <a
           :href="company.href"
           target="_blank"
           rel="noopener noreferrer nofollow"
-        >{{ company.href }}</a>
+          :class="$style['experience-resume-company-link']"
+        >
+          {{ formatedCompanyURL }}
 
-        <div>
+          <Icon name="ic:baseline-open-in-new" />
+        </a>
+
+        <div :class="$style['experience-resume-duration']">
           <time
             :datetime="startDate.toString()"
           >{{ formatedStartDate }}</time> -
@@ -34,13 +45,15 @@
       </div>
     </div>
 
-    <div class="flex flex-col gap-1">
-      <div>Main skills:</div>
+    <div :class="$style['experience-section']">
+      <div :class="$style['experience-title']">Main skills:</div>
 
       <div class="flex gap-1 flex-wrap">
         <Badge
           v-for="skill in skills"
           :key="skill"
+          size="sm"
+          class="bg-white bg-opacity-20"
         >{{ skill }}</Badge>
       </div>
     </div>
@@ -88,6 +101,7 @@
   const durationInMonths = differenceInMonths(endDate ?? new Date(), startDate);
   const durationInYears = Math.floor(durationInMonths / 12);
   const durationRemainder = durationInMonths % 12;
+  const formatedCompanyURL = ref(company.href.replace(/^https?:\/\/|\/$/g, ''))
 
   let formatedDuration = ref(`${durationInYears} years`);
 
@@ -101,7 +115,50 @@
     @apply inline-flex flex-col gap-1;
     @apply p-4;
     @apply rounded-md;
-    @apply shadow-inner;
     @apply bg-white bg-opacity-10;
+    @apply text-white text-opacity-90;
+
+    &-resume {
+      @apply flex items-start lg:items-center gap-2;
+
+      &-description {
+        @apply flex flex-col gap-1;
+      }
+
+      &-header {
+        @apply flex flex-col items-start;
+        @apply lg:flex-row lg:gap-2 lg:items-center;
+      }
+
+      &-title {
+        @apply flex;
+        @apply font-semibold text-opacity-100;
+      }
+
+      &-type {
+        @apply flex justify-start;
+        @apply text-xs;
+      }
+
+      &-company {
+        @apply text-sm;
+
+        &-link {
+          @apply text-sm;
+        }
+      }
+
+      &-duration {
+        @apply text-xs;
+      }
+    }
+
+    &-section {
+      @apply flex flex-col gap-1;
+    }
+
+    &-title {
+      @apply text-sm font-semibold;
+    }
   }
 </style>

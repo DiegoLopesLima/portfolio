@@ -1,6 +1,6 @@
 <template>
   <div :class="$style['hero-banner']">
-    <PageContainer class="relative flex items-center h-full">
+    <PageContainer class="relative flex items-center h-full py-4">
       <div class="grid lg:grid-cols-2 gap-4">
         <article :class="$style['hero-banner-content']">
           <h2 class="text-4xl font-bold">Welcome to my portfolio!</h2>
