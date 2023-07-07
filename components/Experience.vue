@@ -13,14 +13,14 @@
             {{ title }}
           </span>
 
-          <small
-            :class="$style['experience-resume-type']"
-          >
+          <small :class="$style['experience-resume-type']">
             ({{ employmentTypeMap[employmentType] }}, {{ locationTypeMap[locationType] }})
           </small>
         </header>
 
-        <div :class="$style['experience-resume-company']">{{ company.name }}</div>
+        <div :class="$style['experience-resume-company']">
+          {{ company.name }}
+        </div>
 
         <a
           :href="company.href"
@@ -51,17 +51,17 @@
       <div class="flex gap-1 flex-wrap">
         <Badge
           v-for="skill in skills"
-          :key="skill"
+          :key="skill.id"
           size="sm"
           class="bg-white bg-opacity-20"
-        >{{ skill }}</Badge>
+        >{{ skill.name }}</Badge>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-  import { format, differenceInMonths } from 'date-fns';
+  import { format, differenceInMonths, parseISO } from 'date-fns';
 
   import type { Experience } from '@/types/Experience';
   import type { Company } from '@/types/Company';
@@ -82,26 +82,23 @@
     [EmploymentType.PartTime]: 'Part time',
     [EmploymentType.Freelance]: 'Freelance',
   };
-  const props = defineProps<ExperienceProps>();
+  const { item } = defineProps<ExperienceProps>();
   const {
-    item: {
-      value: {
-        title,
-        company,
-        startDate,
-        endDate,
-        locationType,
-        employmentType,
-        skills
-      }
-    }
-  } = toRefs(props);
-  const formatedStartDate = ref(format(startDate, 'MMM yyyy'));
-  const formatedEndDate = ref(endDate ? format(endDate, 'MMM yyyy') : 'Present');
-  const durationInMonths = differenceInMonths(endDate ?? new Date(), startDate);
+    title,
+    company,
+    startDate,
+    endDate,
+    locationType,
+    employmentType,
+    skills
+  } = toRefs(item);
+
+  const formatedStartDate = ref(format(parseISO(startDate.value), 'MMM yyyy'));
+  const formatedEndDate = ref(endDate?.value ? format(parseISO(endDate.value), 'MMM yyyy') : 'Present');
+  const durationInMonths = differenceInMonths(parseISO(endDate?.value ?? new Date().toISOString()), parseISO(startDate.value));
   const durationInYears = Math.floor(durationInMonths / 12);
   const durationRemainder = durationInMonths % 12;
-  const formatedCompanyURL = ref(company.href.replace(/^https?:\/\/|\/$/g, ''))
+  const formatedCompanyURL = ref(company.value.href.replace(/^https?:\/\/|\/$/g, ''))
 
   let formatedDuration = ref(`${durationInYears} years`);
 
@@ -144,6 +141,7 @@
         @apply text-sm;
 
         &-link {
+          @apply inline-flex w-min items-center gap-1;
           @apply text-sm;
         }
       }

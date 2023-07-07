@@ -6,7 +6,7 @@
       $style[`button-${size}`],
       $style[`button-${variant}`]
     ]"
-    v-bind="remainingProps"
+    v-bind="attrs"
   >
     <slot></slot>
   </button>
@@ -22,13 +22,13 @@
   const {
     type,
     size,
-    variant,
-    ...remainingProps
+    variant
   } = withDefaults(defineProps<ButtonProps>(), {
     type: 'button',
     size: 'md',
     variant: 'primary'
   });
+  const attrs = useAttrs();
 </script>
 
 <style lang="scss" module>
@@ -63,9 +63,9 @@
 
     &-on-glass {
       @apply text-white;
-      @apply bg-white bg-opacity-10;
-      @apply border-2 border-white border-opacity-5;
-      @apply hover:bg-opacity-20;
+      @apply bg-black bg-opacity-10;
+      @apply border-2 border-white border-opacity-50;
+      @apply hover:bg-opacity-30;
     }
   }
 </style>

@@ -6,10 +6,12 @@
 
     <ExperienceSection />
 
+    <SkillsSection />
+
     <PageFooter />
   </div>
 </template>
 
-<script>
+<script setup>
   import '@/assets/scss/global.scss';
 </script>
