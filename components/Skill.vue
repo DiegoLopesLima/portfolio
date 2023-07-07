@@ -21,6 +21,22 @@
       </div>
     </div>
 
+    <div class="flex flex-wrap gap-1">
+      <div
+        v-for="company in companies"
+        :key="company.id"
+        class="flex items-center gap-2"
+      >
+        <img
+          :src="company.image"
+          :alt="`${company.name}'s logo.`"
+          width="28"
+          height="28"
+          class="rounded-sm"
+        />
+      </div>
+    </div>
+
     <div v-if="description">{{ description }}</div>
   </div>
 </template>
@@ -48,5 +64,10 @@
   };
 
   const { item } = defineProps<SkillProps>();
-  const { name, level, description } = toRefs(item);
+  const {
+    name,
+    level,
+    description,
+    companies
+  } = toRefs(item);
 </script>
