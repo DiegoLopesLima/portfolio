@@ -1,7 +1,7 @@
 <template>
   <PageSection
     title="Skills"
-    class="bg-cyan-800"
+    class="bg-sky-700"
   >
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
       <Skill
